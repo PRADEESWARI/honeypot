@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindmesher - Login</title>
+
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('../static/bg.png'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .web-name {
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+       
+        .login-container {
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px); 
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+    
+        .login-container h2 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border: 2px solid #bbb;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.5); 
+            color: white;
+            transition: border 0.3s;
+        }
+
+    
+        input[type="text"]:focus, input[type="password"]:focus {
+            border: 2px solid #00796b; 
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 20px;
+            background-color: #00796b; 
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40; 
+        }
+
+       
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required placeholder="Enter your username"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required placeholder="Enter your password"><br>
+
+            <button type="submit">Login</button>
+
+        
+            <!-- <p class="error">Invalid credentials, please try again.</p> -->
+        </form>
+    </div>
+
+</body>
+</html>

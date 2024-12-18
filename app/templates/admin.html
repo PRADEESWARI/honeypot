@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .navbar {
+            background-color: #4A90E2;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .menu a:hover {
+            text-decoration: underline;
+        }
+
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+    
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            flex: 1 1 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            font-size: 20px;
+            color: #4A90E2;
+            font-weight: bold;
+        }
+
+        .card-body {
+            font-size: 16px;
+            color: #444;
+            margin-top: 10px;
+        }
+
+    
+        .graph-container {
+            flex: 1 1 45%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .alert-box {
+            background-color: #f9c74f;
+            color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            animation: popIn 0.5s ease-out;
+        }
+
+        .alert-box .close-btn {
+            background-color: #e94e77;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .alert-box .close-btn:hover {
+            background-color: #d03e63;
+        }
+
+        
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .notification-sound {
+            display: none;
+        }
+
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .card {
+                flex: 1 1 100%;
+            }
+
+            .graph-container {
+                flex: 1 1 100%;
+            }
+
+            .navbar .menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="navbar">
+        <div class="brand">Admin Dashboard</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Users</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+    
+        <h2>Dashboard Overview</h2>
+        <div class="card">
+            <div class="card-header">User Statistics</div>
+            <div class="card-body">
+                <strong>Total Users:</strong> 1,250 <br>
+                <strong>Active Users:</strong> 230 <br>
+                <strong>Inactive Users:</strong> 1,020
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Server Health</div>
+            <div class="card-body">
+                <strong>Status:</strong> Online <br>
+                <strong>CPU Usage:</strong> 65% <br>
+                <strong>Memory Usage:</strong> 70% <br>
+                <strong>Disk Space:</strong> 82% used
+            </div>
+        </div>
+
+        
+        <div class="graph-container">
+            <h3>Server Usage Breakdown</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+
+       
+        <div class="card">
+            <div class="card-header">Suspicious Login Attempts</div>
+            <div class="card-body" id="alerts">
+         
+                <div class="card">
+                    <div class="card-header">Suspicious Activity Detected</div>
+                    <div class="card-body">
+                        <strong>Timestamp:</strong> 12/12/2024 <br>
+                        <strong>IP Address:</strong> 192.168.1.1 <br>
+                        <strong>Username:</strong> user123
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-box" id="alertBox">
+        <button class="close-btn" onclick="closeAlert()">×</button>
+        <span id="alertMessage"></span>
+    </div>
+
+  
+    <audio id="notificationSound" class="notification-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        
+        socket.on('alert', function(data) {
+            
+            var alerts = document.getElementById('alerts');
+            var newCard = document.createElement('div');
+            newCard.classList.add('card');
+            newCard.innerHTML = `
+                <div class="card-header">
+                    Suspicious Activity Detected
+                </div>
+                <div class="card-body">
+                    <strong>Timestamp:</strong> ${data.timestamp} <br>
+                    <strong>IP Address:</strong> ${data.ip_address} <br>
+                    <strong>Username:</strong> ${data.username} <br>
+                </div>
+            `;
+            alerts.insertBefore(newCard, alerts.firstChild);
+
+            
+            showAlert(`Suspicious activity detected: IP ${data.ip_address}, Username ${data.username}`);
+
+      
+            playNotificationSound();
+        });
+
+        
+        function showAlert(message) {
+            var alertBox = document.getElementById('alertBox');
+            var alertMessage = document.getElementById('alertMessage');
+            alertMessage.textContent = message;
+            alertBox.style.display = 'block';
+
+    
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        
+        function closeAlert() {
+            var alertBox = document.getElementById('alertBox');
+            alertBox.style.display = 'none';
+        }
+        function playNotificationSound() {
+            var sound = document.getElementById('notificationSound');
+            sound.play();
+        }
+
+        
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['CPU Usage', 'Memory Usage', 'Disk Space'],
+                datasets: [{
+                    label: 'Server Health (%)',
+                    data: [65, 70, 82], 
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56'],
+                    borderColor: '#fff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

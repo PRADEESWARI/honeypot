@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Learning Hub - Home</title>
+    <style>
+        /* General reset and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Page Layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0;
+        }
+
+        /* Header with Cyber Security Theme */
+        .header {
+            width: 100%;
+            background-color: #212121; /* Dark gray for header */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        /* Main content */
+        .content {
+            text-align: center;
+            max-width: 900px;
+            margin: 50px 20px;
+        }
+
+        .content h2 {
+            font-size: 32px;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Features section with icons */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 50px 0;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .feature {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 30%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            text-align: center;
+        }
+
+        .feature i {
+            font-size: 40px;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            color: #212121;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            background-color: #00796b;
+            color: white;
+            padding: 50px 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta button {
+            background-color: white;
+            color: #00796b;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta button:hover {
+            background-color: #004d40;
+            color: white;
+        }
+
+        /* Footer Styling */
+        .footer {
+            width: 100%;
+            background-color: #212121;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Cyber Security Learning Hub</h1>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <h2>Welcome to Your Cyber Security Learning Journey</h2>
+        <p>Welcome to the Cyber Security Learning Hub. This platform offers a comprehensive range of courses and resources designed to help you understand the fundamental concepts of cyber security. Whether you are a beginner or looking to deepen your knowledge, we have the right tools and resources to help you succeed.</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <div class="feature">
+            <i class="fas fa-lock"></i>
+            <h3>Cyber Security Fundamentals</h3>
+            <p>Understand the basics of cyber security, from protecting data to securing your devices against cyber threats.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Advanced Security Concepts</h3>
+            <p>Learn about advanced concepts like penetration testing, ethical hacking, and cryptography to sharpen your skills.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>Interactive Tutorials</h3>
+            <p>Engage with interactive tutorials and practical exercises to apply what you learn in real-world scenarios.</p>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta">
+        <h2>Get Started Now</h2>
+        <p>Join our community of learners and begin your journey in the world of cyber security today!</p>
+        <button onclick="window.location.href='/courses'">Explore Courses</button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 Cyber Security Learning Hub | All rights reserved.</p>
+    </footer>
+
+    <!-- Font Awesome Icons (for the icons in the features section) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
